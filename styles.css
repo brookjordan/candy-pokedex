@@ -1,0 +1,177 @@
+button {
+  font: inherit;
+  background: none;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: 0;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+body {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+  padding-top: 55px;
+  background: #eee;
+}
+
+.pokemon {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-basis: 165px;
+      -ms-flex-preferred-size: 165px;
+          flex-basis: 165px;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  max-width: 250px;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 15px;
+  padding-top: 30px;
+  background: #fff;
+  margin: 5px;
+  margin-left: 15px;
+  margin-top: 15px;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+.pokemon__drop {
+  width: 100%;
+  height: 10px;
+}
+.pokemon__index {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  background-color: #dc7882;
+  font-family: "Raleway", sans-serif;
+  color: white;
+  font-weight: 100;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+.pokemon__name, .pokemon__candy, .pokemon__owned, .pokemon__evolvable {
+  height: 50px;
+  line-height: 50px;
+}
+.pokemon__name {
+  font-family: "Raleway", sans-serif;
+  line-height: 30px;
+  height: auto;
+  font-weight: 800;
+  font-size: 14px;
+  text-align: right;
+  text-transform: uppercase;
+}
+.pokemon__candy, .pokemon__owned, .pokemon__evolvable {
+  font-family: "open sans", sans-serif;
+  font-size: 20px;
+  font-weight: 100;
+}
+.pokemon__owned {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding-left: 5px;
+  line-height: 30px;
+  height: auto;
+}
+.pokemon__owned::before {
+  content: '- ';
+}
+.pokemon__candy {
+  -webkit-flex-basis: 50%;
+      -ms-flex-preferred-size: 50%;
+          flex-basis: 50%;
+  max-width: 50%;
+  padding-left: 35px;
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/291020/candy.png");
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-position: 0 50%;
+}
+.pokemon__evolvable {
+  -webkit-flex-basis: 50%;
+      -ms-flex-preferred-size: 50%;
+          flex-basis: 50%;
+  max-width: 50%;
+  padding-right: 35px;
+  text-align: right;
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/291020/evolve.png");
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-position: 100% 50%;
+}
+.pokemon__catch, .pokemon__hatch, .pokemon__dispatch, .pokemon__evolve {
+  width: 33.33%;
+  padding: 20px 5px;
+  box-shadow: inset 0 5px 10px -8px black;
+  font-family: "Raleway", sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+}
+.pokemon__catch::after {
+  content: 'Catch';
+}
+.pokemon__hatch::after {
+  content: 'Hatch';
+}
+.pokemon__dispatch::after {
+  content: 'Dispatch';
+}
+.pokemon__evolve::after {
+  content: 'Evolve';
+}
+@media (min-width: 500px) {
+  .pokemon {
+    min-width: 200px;
+  }
+}
+
+.undo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  -webkit-flex-basis: 100%;
+      -ms-flex-preferred-size: 100%;
+          flex-basis: 100%;
+  height: 50px;
+  cursor: pointer;
+  opacity: 0.8;
+}
