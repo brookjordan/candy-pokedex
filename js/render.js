@@ -15,6 +15,7 @@ function renderPokemon() {
       dispatch:  document.createElement('button'),
       evolve:    document.createElement('button'),
     };
+    let countdownToLongPress;
     
     pokeDOM.container.className = `${baseClass} ${baseClass}--entry-${index + 1} ${baseClass}--name-${pokemonName.toLowerCase().replace(/ /g, '-')}`;
     pokeDOM.index.className     = `${baseClass}__index`;
@@ -33,6 +34,25 @@ function renderPokemon() {
     pokeDOM.index.innerHTML = pokemon.index;
     pokeDOM.name.innerHTML  = pokemonName;
     
+    pokeDOM.container.addEventListener('contextmenu', e => {
+      e.preventDefault();
+      setData(pokemonName);
+    });
+    pokeDOM.container.addEventListener('touchstart', e => {
+      countdownToLongPress = setTimeout(() => {
+        countdownToLongPress = false;
+        setData(pokemonName);
+      }, 300);
+    });
+    pokeDOM.container.addEventListener('touchend', e => {
+      clearTimeout(countdownToLongPress);
+      countdownToLongPress = false;
+    });
+    pokeDOM.container.addEventListener('touchmove', e => {
+      clearTimeout(countdownToLongPress);
+      countdownToLongPress = false;
+    });
+
     pokeDOM.catch.addEventListener('click', () => catchPokemon(pokemonName));
     
     pokeDOM.dispatch.addEventListener('click', e => {

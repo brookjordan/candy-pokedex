@@ -28,7 +28,7 @@ body {
   -webkit-justify-content: space-around;
       -ms-flex-pack: distribute;
           justify-content: space-around;
-  padding-top: 55px;
+  padding-bottom: 55px;
   background: #eee;
 }
 
@@ -108,13 +108,15 @@ body {
   font-weight: 300;
 }
 .pokemon__owned {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  padding-left: 5px;
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  padding: 0 5px;
   line-height: 30px;
   height: auto;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 3px;
 }
 .pokemon__owned::before {
   content: '- ';
@@ -200,7 +202,7 @@ So let's not include all the double classed. */
 
 .undo {
   position: fixed;
-  top: 0;
+  bottom: 0;
   left: 0;
   z-index: 1;
   width: 100%;

@@ -69,3 +69,23 @@ function save() {
   });
   localStorage.setItem('pokedex', JSON.stringify(savedData));
 }
+
+function setData(pokemonName) {
+  const pokemon = pokedex(pokemonName);
+  let setCandyTo = Math.abs(parseInt(prompt(`How many ${pokemonName} CANDY do you own?`, pokemon.candy)));
+  let setOwnedTo = Math.abs(parseInt(prompt(`How many ${pokemonName} MONSTERS do you own?`, pokemon.owned)));
+
+  setCandyTo = Number.isNaN(setCandyTo) ? 0 : -(setCandyTo - pokemon.candy);
+  setOwnedTo = Number.isNaN(setOwnedTo) ? 0 : -(setOwnedTo - pokemon.owned);
+
+  if (setCandyTo || setOwnedTo) {
+    commandList.push({
+      command: 'manual set',
+      pokemon: pokemonName,
+      consumed: {
+        candy:   setCandyTo,
+        monster: setOwnedTo,
+      }
+    });
+  }
+}
