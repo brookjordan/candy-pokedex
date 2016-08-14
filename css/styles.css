@@ -81,7 +81,10 @@ body {
   font-weight: 100;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
 }
-.pokemon__name, .pokemon__candy, .pokemon__owned, .pokemon__evolvable {
+.pokemon__name,
+.pokemon__candy,
+.pokemon__owned,
+.pokemon__evolvable {
   height: 50px;
   line-height: 50px;
 }
@@ -94,7 +97,9 @@ body {
   text-align: right;
   text-transform: uppercase;
 }
-.pokemon__candy, .pokemon__owned, .pokemon__evolvable {
+.pokemon__candy,
+.pokemon__owned,
+.pokemon__evolvable {
   font-family: "open sans", sans-serif;
   font-size: 20px;
   font-weight: 100;
@@ -133,17 +138,44 @@ body {
   background-size: 30px 30px;
   background-repeat: no-repeat;
   background-position: 100% 50%;
+  visibility: hidden;
 }
-.pokemon__catch, .pokemon__hatch, .pokemon__dispatch, .pokemon__evolve {
-  width: 33.33%;
-  padding: 20px 5px;
+.pokemon--evolves .pokemon__evolvable {
+  visibility: visible;
+}
+
+.pokemon__catch,
+.pokemon__dispatch,
+.pokemon__evolve {
+  width: 100%;
+  padding: 20px 0;
   box-shadow: inset 0 5px 10px -8px black;
   font-family: "Raleway", sans-serif;
   font-size: 10px;
   text-transform: uppercase;
   text-align: center;
   cursor: pointer;
+  overflow: hidden;
+  transition: width 0.2s;
 }
+.pokemon__evolve {
+  width: 0%;
+}
+.pokemon__dispatch {
+  width: 0%;
+}
+.pokemon--ready-to-transfer .pokemon__dispatch,
+.pokemon--ready-to-transfer .pokemon__catch {
+  width: 50%;
+}
+/* If a pokemon can evolve, it can be dispatched.
+So let's not include all the double classed. */
+.pokemon--ready-to-evolve .pokemon__catch,
+.pokemon--ready-to-evolve .pokemon__dispatch,
+.pokemon--ready-to-evolve .pokemon__evolve  {
+  width: 33.33%;
+}
+
 .pokemon__catch::after {
   content: 'Catch';
 }

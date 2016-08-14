@@ -1,8 +1,7 @@
 function renderPokemon() {
-  Object.keys(pokedex)
-  .forEach(pokemonName => {
+  pokedex.names.forEach(pokemonName => {
     const baseClass = 'pokemon';
-    const pokemon = pokedex[pokemonName];
+    const pokemon = pokedex(pokemonName);
     const pokeDOM = {
       container: document.createElement('div'),
       name:      document.createElement('h1'),
@@ -48,11 +47,16 @@ function renderPokemon() {
     pokeDOM.container.appendChild(pokeDOM.owned);
     pokeDOM.container.appendChild(pokeDOM.drop);
     pokeDOM.container.appendChild(pokeDOM.candy);
-    pokeDOM.container.appendChild(pokeDOM.evolvable);
     //pokeDOM.container.appendChild(pokeDOM.hatch);
+    pokeDOM.container.appendChild(pokeDOM.evolvable);
     pokeDOM.container.appendChild(pokeDOM.evolve);
     pokeDOM.container.appendChild(pokeDOM.catch);
     pokeDOM.container.appendChild(pokeDOM.dispatch);
+
+
+    if (pokemon.toEvolve < Infinity) {
+      pokeDOM.container.classList.add(`${baseClass}--evolves`);
+    }
     
     document.body.appendChild(pokeDOM.container);
    

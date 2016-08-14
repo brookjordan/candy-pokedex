@@ -1,17 +1,9 @@
-const pokemonElts = {};
-const commandList = [];
-const undo = document.querySelector('button');
-undo.disabled = true;
+var log = false;
 
-commandList.push = function(commands) {
-  undo.disabled = false;
- 
-  !Array.isArray(commands) && (commands = [commands]);
-  commands.forEach(pushCommand);
-  
-  Array.prototype.push.call(commandList, commands);
-}
-undo.addEventListener('click', undoCommands);
+const pokedex     = getPokedex();
+const pokemonElts = {};
 
 renderPokemon();
 updatePokedexData();
+
+var log = true;

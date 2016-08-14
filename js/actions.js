@@ -1,5 +1,5 @@
 function catchPokemon(pokemonName) {
-  const pokemon = pokedex[pokemonName];
+  const pokemon = pokedex(pokemonName);
   
   commandList.push({
     command: 'add candy',
@@ -12,9 +12,9 @@ function catchPokemon(pokemonName) {
 }
 
 function dispatchPokemon(pokemonName) {
-  const pokemon = pokedex[pokemonName];
+  const pokemon = pokedex(pokemonName);
   
-  if (pokemon.owned.monster) {
+  if (pokemon.owned) {
     commandList.push({
       command: 'defer',
       pokemon: pokemonName,
@@ -27,16 +27,16 @@ function dispatchPokemon(pokemonName) {
 }
 
 function tryEvolvePokemon(pokemonName) {
-  const pokemon = pokedex[pokemonName];
+  const pokemon = pokedex(pokemonName);
   
-  if (pokemon.owned.candy + pokemon.owned.monster > pokemon.toEvolve) {
+  if (pokemon.candy + pokemon.owned > pokemon.toEvolve) {
     evolvePokemon(pokemonName);
   }
 }
 
 function evolvePokemon(pokemonName) {
-  const pokemon           = pokedex[pokemonName];
-  const candyToConsume    = Math.min(pokemon.toEvolve, pokemon.owned.candy);
+  const pokemon           = pokedex(pokemonName);
+  const candyToConsume    = Math.min(pokemon.toEvolve, pokemon.candy);
   const monstersToConsume = pokemon.toEvolve - candyToConsume + 1;
   
   commandList.push([
