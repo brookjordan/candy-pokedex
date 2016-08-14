@@ -1,5 +1,5 @@
 function renderPokemon() {
-  pokedex.names.forEach(pokemonName => {
+  pokedex.names.forEach((pokemonName, index) => {
     const baseClass = 'pokemon';
     const pokemon = pokedex(pokemonName);
     const pokeDOM = {
@@ -16,7 +16,7 @@ function renderPokemon() {
       evolve:    document.createElement('button'),
     };
     
-    pokeDOM.container.className = `${baseClass}`;
+    pokeDOM.container.className = `${baseClass} ${baseClass}--entry-${index + 1} ${baseClass}--name-${pokemonName.toLowerCase().replace(/ /g, '-')}`;
     pokeDOM.index.className     = `${baseClass}__index`;
     pokeDOM.name.className      = `${baseClass}__name`;
     pokeDOM.candy.className     = `${baseClass}__candy`;
@@ -27,6 +27,8 @@ function renderPokemon() {
     pokeDOM.hatch.className     = `${baseClass}__hatch`;
     pokeDOM.dispatch.className  = `${baseClass}__dispatch`;
     pokeDOM.evolve.className    = `${baseClass}__evolve`;
+
+    pokeDOM.container.style.backgroundImage = `url("./i/${index + 1}.png")`;
     
     pokeDOM.index.innerHTML = pokemon.index;
     pokeDOM.name.innerHTML  = pokemonName;
